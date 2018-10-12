@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { loggedIn } from './../selectors';
+// import { bindActionCreators } from 'redux';
+// import { connect } from 'react-redux';
+// import { loggedIn } from './../selectors';
+import { Field, reduxForm } from 'redux-form';
 
 class User extends Component {
   render() {
+    const { handleSubmit } = this.props;
+    console.log(this.props);
     return (
       <div className="col-xl-4 mx-auto mt-3 bg-light p-3 shadow ">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address - {this.props.loggedIn}</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+            <Field type="email" name="email" component="input" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
             <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+            <Field type="password" name="password" component="input" className="form-control" id="exampleInputPassword1" placeholder="Password" />
           </div>
           <div className="form-group form-check">
             <input type="checkbox" className="form-check-input" id="exampleCheck1" />
@@ -29,19 +32,9 @@ class User extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    {
+User = reduxForm({
+  // a unique name for the form
+  form: 'contact'
+})(User)
 
-    },
-    dispatch
-  );
- };
-
-function mapStateToProps (state) {
-  return  {
-    loggedIn:loggedIn(state)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default User;
