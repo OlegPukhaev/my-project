@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 class Profile extends Component {
   render() {
     return (
-    <div className="row">
-      <h1>Profile</h1>
-    </div>
+      <h1 className="text-center">Profile</h1>
     );
   }
 }
