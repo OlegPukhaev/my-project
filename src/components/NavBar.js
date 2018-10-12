@@ -7,32 +7,24 @@ class NavBar extends Component {
     <div className="row align-center">
       <ul className="nav">
         <li className="nav-item">
-          <a href ="#!" className="nav-link active" href="#">
-            <Link to="/user">
+            <Link to="/user" className="nav-link">
               User Login
             </Link>
-          </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#!">
-          <Link to="/page-one">
+          <Link to="/page-one" className="nav-link">
             Page One
           </Link>
-          </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#!">
-            <Link to="/page-two">
+            <Link to="/page-two" className="nav-link">
               Page Two
             </Link>
-          </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#!">
-            <Link to="/">
-              Profile
+            <Link to="/" className="nav-link">
+              PublicHomePage
             </Link>
-          </a>
         </li>
       </ul>
     </div>
