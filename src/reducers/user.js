@@ -1,18 +1,21 @@
-const USER = 'USER';
+const IS_USER_LOGIN = 'IS_USER_LOGIN';
 
-let initialState = {};
+let initialState = {
+  loggedIn:false,
+  user:{}
+};
 
 export function setUserStatus(value) {
     return dispatch => {
       dispatch({
-		type: USER, 
+		type: IS_USER_LOGIN, 
     payload: value
       });
     };
   }
 
 const actionsMap = {
-	[USER]: (state, action) => {
+	[IS_USER_LOGIN]: (state, action) => {
       return {...state,
         isUserLogin: action.payload
       }
