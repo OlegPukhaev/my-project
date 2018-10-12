@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { loggedIn } from './../selectors';
 
 class User extends Component {
   render() {
@@ -6,7 +9,7 @@ class User extends Component {
       <div className="col-xl-4 mx-auto mt-3 bg-light p-3 shadow ">
         <form>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address</label>
+            <label htmlFor="exampleInputEmail1">Email address - {this.props.loggedIn}</label>
             <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
             <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
@@ -26,4 +29,19 @@ class User extends Component {
   }
 }
 
-export default User;
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+
+    },
+    dispatch
+  );
+ };
+
+function mapStateToProps (state) {
+  return  {
+    loggedIn:loggedIn(state)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(User);
