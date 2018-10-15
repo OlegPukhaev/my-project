@@ -1,29 +1,33 @@
+import { auth } from './../utilites/auth';
+
 const IS_USER_LOGIN = 'IS_USER_LOGIN';
+const USER_FETCH_REQUESTED = 'USER_FETCH_REQUESTED';
 
 let initialState = {
   loggedIn:false,
   user:{}
 };
 
-export function setUserStatus(value) {
-    return dispatch => {
-      dispatch({
-		type: IS_USER_LOGIN, 
-    payload: value
-      });
-    };
-  }
+export function userFetchRequest(value) {
+  console.log("Данные :",value);
+  return dispatch => {
+    dispatch({
+      type: USER_FETCH_REQUESTED, 
+      payload: value
+    });
+  };
+}
 
 const actionsMap = {
-	[IS_USER_LOGIN]: (state, action) => {
-      return {...state,
-        isUserLogin: action.payload
-      }
+	[USER_FETCH_REQUESTED]: (state, action) => {
+    return {...state,
+      isUserLogin: action.payload
+    }
 	}
 };
 
 export default function user(state = initialState, action) {
-    const reduceFn = actionsMap[action.type];
-    if (!reduceFn) return state;
-    return reduceFn(state, action);
-  }
+  const reduceFn = actionsMap[action.type];
+  if (!reduceFn) return state;
+  return reduceFn(state, action);
+}

@@ -5,7 +5,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 let User = props =>  {
-    const { handleSubmit } = props;
+    const { handleSubmit, submitting } = props
     // console.log(this.props);
     return (
       <div className="col-xl-4 mx-auto mt-3 bg-light p-3 shadow ">
@@ -23,7 +23,7 @@ let User = props =>  {
             <Field type="checkbox"  name="checkbox" component="input" className="form-check-input" id="exampleCheck1" />
             <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" disabled={submitting} className="btn btn-primary">Submit</button>
         </form>
       </div>
 
