@@ -15,6 +15,11 @@ import PageNotFound from './PageNotFound';
 
 
 class Content extends Component {
+
+  submit = value => {
+    console.log(value);
+  } 
+
   render() {
     const {loggedIn} = this.props;
     return (
@@ -24,7 +29,7 @@ class Content extends Component {
               <div className="container mt-3">
               <Switch>
                   <Route exact path="/"  render={() => <PublicHomePage />} />
-                  <Route exact path="/user" render={() => <User />} />
+                  <Route exact path="/user" render={() => <User onSubmit={this.submit}/>} />
                   <Route exact path="/page-one" render={() => (
                       loggedIn ? (
                         <PageOne />

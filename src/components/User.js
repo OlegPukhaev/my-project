@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import { bindActionCreators } from 'redux';
 // import { connect } from 'react-redux';
 // import { loggedIn } from './../selectors';
 import { Field, reduxForm } from 'redux-form';
 
-class User extends Component {
-  render() {
-    const { handleSubmit } = this.props;
-    console.log(this.props);
+let User = props =>  {
+    const { handleSubmit } = props;
+    // console.log(this.props);
     return (
       <div className="col-xl-4 mx-auto mt-3 bg-light p-3 shadow ">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address - {this.props.loggedIn}</label>
+            <label htmlFor="exampleInputEmail1">Email address</label>
             <Field type="email" name="email" component="input" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
             <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
@@ -21,7 +20,7 @@ class User extends Component {
             <Field type="password" name="password" component="input" className="form-control" id="exampleInputPassword1" placeholder="Password" />
           </div>
           <div className="form-group form-check">
-            <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+            <Field type="checkbox"  name="checkbox" component="input" className="form-check-input" id="exampleCheck1" />
             <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
@@ -29,7 +28,6 @@ class User extends Component {
       </div>
 
     );
-  }
 }
 
 User = reduxForm({

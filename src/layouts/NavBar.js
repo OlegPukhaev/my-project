@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import {NavLink } from "react-router-dom";
 
 class NavBar extends Component {
-  
-  render() {
 
+  render() {
     return (
     <div className="row align-center">
       <ul className="nav">
         <li className="nav-item">
-            <NavLink  to="/user" className="nav-link" >
+            <NavLink  to="/user" className="nav-link">
               User Login
             </NavLink >
         </li>
