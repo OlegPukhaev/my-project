@@ -17,7 +17,7 @@ class Content extends Component {
 
   submit = value => {
     console.log(value);
-    this.props.userFetchRequest(value);
+    this.props.userFetchRequest({type: 'USER_FETCH_REQUESTED', value});
     // const { userId='2', dispatch } = this.props;
     
     // dispatch({type: 'USER_FETCH_REQUESTED', payload: {userId}})
@@ -26,6 +26,7 @@ class Content extends Component {
 
   render() {
     const {loggedIn} = this.props;
+    
     return (
         <Router >
           <div className="container-fluid">
@@ -66,7 +67,7 @@ const mapDispatchToProps = dispatch => {
     },
     dispatch
   );
- };
+};
 
 function mapStateToProps (state) {
   return  {
