@@ -19,10 +19,6 @@ let User = props =>  {
             <label htmlFor="exampleInputPassword1">Password</label>
             <Field type="password" name="password" component="input" className="form-control" id="exampleInputPassword1" placeholder="Password" />
           </div>
-          <div className="form-group form-check">
-            <Field type="checkbox"  name="checkbox" component="input" className="form-check-input" id="exampleCheck1" />
-            <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-          </div>
           <button type="submit" disabled={submitting} className="btn btn-primary">Submit</button>
         </form>
       </div>
@@ -32,7 +28,7 @@ let User = props =>  {
 
 User = reduxForm({
   // a unique name for the form
-  form: 'contact'
+  form: 'userLog'
 })(User)
 
 export default User;

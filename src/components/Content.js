@@ -16,7 +16,7 @@ import PageNotFound from './PageNotFound';
 class Content extends Component {
 
   submit = value => {
-    console.log(value);
+    // console.log(value);
     this.props.userFetchRequest(value);
   } 
 
