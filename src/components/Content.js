@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-// import createStore from './../reducers/createStore';
-// import { Provider } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import { loggedIn } from './../selectors';
+import { userFetchRequest } from './../reducers/user';
 
 import User from './User';
 import NavBar from './../layouts/NavBar';
@@ -18,6 +17,7 @@ class Content extends Component {
 
   submit = value => {
     console.log(value);
+    this.props.userFetchRequest(value);
   } 
 
   render() {
@@ -58,7 +58,7 @@ class Content extends Component {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-
+      userFetchRequest
     },
     dispatch
   );

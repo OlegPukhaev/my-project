@@ -1,6 +1,6 @@
 import { auth } from './../utilites/auth';
 
-const IS_USER_LOGIN = 'IS_USER_LOGIN';
+// const IS_USER_LOGIN = 'IS_USER_LOGIN';
 const USER_FETCH_REQUESTED = 'USER_FETCH_REQUESTED';
 
 let initialState = {
@@ -9,10 +9,11 @@ let initialState = {
 };
 
 export function userFetchRequest(value) {
-  console.log("Данные :",value);
+  console.log("Данные для всей фигни :",value);
   return dispatch => {
     dispatch({
       type: USER_FETCH_REQUESTED, 
+      loggedIn: true,
       payload: value
     });
   };
@@ -21,7 +22,8 @@ export function userFetchRequest(value) {
 const actionsMap = {
 	[USER_FETCH_REQUESTED]: (state, action) => {
     return {...state,
-      isUserLogin: action.payload
+      loggedIn:action.loggedIn,
+      user: action.payload
     }
 	}
 };
