@@ -14,20 +14,10 @@ import PageNotFound from './PageNotFound';
 
 
 class Content extends Component {
-constructor (props) {
-  super(props);
-
-}
-
 
   submit = value => {
-    console.log(value);
-    // this.props.userFetchRequest({type: 'USER_FETCH_REQUESTED', value});
-    this.props.getCurrentUserInfo("UID10000");
-    // const { userId='2', dispatch } = this.props;
-    
-    // dispatch({type: 'USER_FETCH_REQUESTED', payload: {userId}})
-    
+    console.log(value.email, value.password);
+    this.props.getCurrentUserInfo(value.email, value.password);
   } 
 
   render() {

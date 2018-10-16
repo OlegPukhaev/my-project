@@ -7,11 +7,13 @@ Auth.configure({
 
 export function fetchUserLogin(email, password) {
 	return Auth.emailSignIn({
-		email: email,
-		password: password
-	}).then(response => {
+		email: "nuba818400@gmail.com",
+		password: "123456789"
+	})
+	.then(response => {
 		// successMessage(`Добро пожаловать ${response.data.full_name}`);
-		return true;
+		// console.log(response.data);
+		return response.data;
 	}).catch( error => {
 		// warningMessage(`Ошибка логина попробуй еще дружище!`); 
 		return false;

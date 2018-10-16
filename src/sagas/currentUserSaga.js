@@ -1,6 +1,5 @@
-// import { delay } from 'redux-saga';
 import { take, put, call, apply } from 'redux-saga/effects';
-// import fetch from 'isomorphic-fetch';
+import { fetchUserLogin } from './../utility/auth';
 
 import {
   GET_CURRENT_USER_INFO,
@@ -9,6 +8,12 @@ import {
 
  
 export function* currentUserSaga () {
-  const { id } = yield take(GET_CURRENT_USER_INFO);
-  console.info("ID -- сюда попал", id);
+  const { email, password } = yield take(GET_CURRENT_USER_INFO);
+  const response = yield call(fetchUserLogin);
+  console.log("Response",response);
+
+  // const data = yield apply(response, JSON.response);
+
+  console.info("email/password :", email,"/", password);
+  // console.log("Data?", data);
 }
