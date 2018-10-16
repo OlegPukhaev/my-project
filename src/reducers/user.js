@@ -1,8 +1,6 @@
-// import { auth } from './../utilites/auth';
-
-// const IS_USER_LOGIN = 'IS_USER_LOGIN';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const GET_CURRENT_USER_INFO = 'GET_CURRENT_USER_INFO';
+export const GET_VALIDATE_TOKEN = 'GET_VALIDATE_TOKEN';
 
 let initialState = {
   id:"U10000",
@@ -11,6 +9,14 @@ let initialState = {
   loggedIn:false,
   data:{},
 };
+
+export function getValidateToken() {
+  return dispatch => {
+    dispatch({
+      type: GET_VALIDATE_TOKEN, 
+    });
+  };
+}
 
 export function getCurrentUserInfo(email, password) {
   // console.log("Данные для всей фигни :",value);

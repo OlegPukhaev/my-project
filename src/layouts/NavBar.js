@@ -13,8 +13,8 @@ class NavBar extends Component {
             </NavLink >
         </li>
         <li className="nav-item">
-          <NavLink  to="/page-one" className="nav-link" >
-            Page One
+          <NavLink  to="/profile" className="nav-link" >
+            Profile
           </NavLink >
         </li>
         <li className="nav-item">

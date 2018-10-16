@@ -3,11 +3,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import { loggedIn,userData } from './../selectors';
-import { getCurrentUserInfo } from './../reducers/user';
+import { getCurrentUserInfo, getValidateToken } from './../reducers/user';
 
 import User from './User';
 import NavBar from './../layouts/NavBar';
-import PageOne from './PageOne';
+import Profile from './Profile';
 import PageTwo from './PageTwo';
 import PublicHomePage from './PublicHomePage';
 import PageNotFound from './PageNotFound';
@@ -15,8 +15,12 @@ import PageNotFound from './PageNotFound';
 
 class Content extends Component {
 
+  componentDidMount() {
+    this.props.getValidateToken();
+  }
+
   submit = value => {
-    console.log(value.email, value.password);
+    // console.log(value.email, value.password);
     this.props.getCurrentUserInfo(value.email, value.password);
   } 
 
@@ -33,15 +37,15 @@ class Content extends Component {
                   <Route exact path="/user" render={() => 
                     (
                         loggedIn ? (
-                          <Redirect to="/page-one"/>
+                          <Redirect to="/profile"/>
                         ) : (
                           <User onSubmit={this.submit}/>
                         )
                       )
                   } />
-                  <Route exact path="/page-one" render={() => (
+                  <Route exact path="/profile" render={() => (
                       loggedIn ? (
-                        <PageOne data={this.props.userData}/>
+                        <Profile data={this.props.userData}/>
                       ) : (
                         <Redirect to="/user"/>
                       )
@@ -67,8 +71,8 @@ class Content extends Component {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      // userFetchRequest,
-      getCurrentUserInfo
+      getCurrentUserInfo,
+      getValidateToken
     },
     dispatch
   );
