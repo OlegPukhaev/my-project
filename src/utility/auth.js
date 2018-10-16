@@ -2,13 +2,12 @@ var Auth = require('./../../node_modules/j-toker/src/j-toker');
 
 Auth.configure({
 	apiUrl:"https://floating-atoll-63112.herokuapp.com/api"
-	// storage:'cookies',
 });
 
 export function fetchUserLogin(email, password) {
 	return Auth.emailSignIn({
-		email: "nuba818400@gmail.com",
-		password: "123456789"
+		email: email,
+		password: password
 	})
 	.then(response => {
 		// successMessage(`Добро пожаловать ${response.data.full_name}`);

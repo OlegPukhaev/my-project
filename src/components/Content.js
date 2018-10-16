@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import { loggedIn } from './../selectors';
-import { userFetchRequest, getCurrentUserInfo } from './../reducers/user';
+import { getCurrentUserInfo } from './../reducers/user';
 
 import User from './User';
 import NavBar from './../layouts/NavBar';
@@ -59,7 +59,7 @@ class Content extends Component {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      userFetchRequest,
+      // userFetchRequest,
       getCurrentUserInfo
     },
     dispatch

@@ -1,7 +1,7 @@
 // import { auth } from './../utilites/auth';
 
 // const IS_USER_LOGIN = 'IS_USER_LOGIN';
-export const USER_FETCH_REQUESTED = 'USER_FETCH_REQUESTED';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const GET_CURRENT_USER_INFO = 'GET_CURRENT_USER_INFO';
 
 let initialState = {
@@ -9,7 +9,7 @@ let initialState = {
   email:null,
   password:null,
   loggedIn:false,
-  user:{},
+  data:{},
 };
 
 export function getCurrentUserInfo(email, password) {
@@ -23,22 +23,21 @@ export function getCurrentUserInfo(email, password) {
   };
 }
 
-export function userFetchRequest(value) {
-  console.log("Данные для всей фигни :",value);
+export function setCurrentUser(value, loggedIn) {
   return dispatch => {
     dispatch({
-      type: USER_FETCH_REQUESTED, 
-      loggedIn: true,
+      type: SET_CURRENT_USER, 
+      loggedIn: loggedIn,
       payload: value
     });
   };
 }
 
 const actionsMap = {
-	[USER_FETCH_REQUESTED]: (state, action) => {
+	[SET_CURRENT_USER]: (state, action) => {
     return {...state,
       loggedIn:action.loggedIn,
-      user: action.payload
+      data: action.payload
     }
 	},
 	[GET_CURRENT_USER_INFO]: (state, action) => {

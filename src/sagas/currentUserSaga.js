@@ -9,11 +9,7 @@ import {
  
 export function* currentUserSaga () {
   const { email, password } = yield take(GET_CURRENT_USER_INFO);
-  const response = yield call(fetchUserLogin);
+  const response = yield call(fetchUserLogin, email, password);
   console.log("Response",response);
-
-  // const data = yield apply(response, JSON.response);
-
-  console.info("email/password :", email,"/", password);
-  // console.log("Data?", data);
+  yield put(setCurrentUser(response, true));
 }

@@ -4,6 +4,8 @@
 export const loggedIn = state => state.user.loggedIn;
 export const user = state => state.user.loggedIn;
 
+export const userData = state => state.user.data;
+
 
 
 
