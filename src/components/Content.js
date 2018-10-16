@@ -14,6 +14,11 @@ import PageNotFound from './PageNotFound';
 
 
 class Content extends Component {
+constructor (props) {
+  super(props);
+  
+}
+
 
   submit = value => {
     console.log(value);

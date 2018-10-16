@@ -1,10 +1,17 @@
 import {createStore, applyMiddleware} from 'redux';
-import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import rootReduser from './rootReducer';
-import mySaga from './../utilites/sagas';
+
+import createSagaMiddleware from 'redux-saga';
+import { initSagas } from './initSagas';
+// import mySaga from './../utilites/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export default createStore(rootReduser, applyMiddleware(thunk), applyMiddleware(sagaMiddleware));
-sagaMiddleware.run(mySaga);
+export default createStore(
+  rootReduser, 
+  applyMiddleware(thunk, sagaMiddleware), 
+  );
+console.info("Saga MiddleWare implemented");
+initSagas(sagaMiddleware);
+// sagaMiddleware.run(mySaga);

@@ -17,6 +17,7 @@ function* fetchUser(action) {
   Начинается вызов fetchUser на каждый `USER_FETCH_REQUESTED` action.
   takeEvery - позволяет параллельное выполнение запросов, если новый action пришел до выполнения саги от предыдущего
 */
+
 function* mySaga() {
   console.log("До реквеста");
   yield* takeEvery("USER_FETCH_REQUESTED", fetchUser);
