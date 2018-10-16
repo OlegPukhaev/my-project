@@ -1,6 +1,6 @@
 // import { delay } from 'redux-saga';
 import { take, put, call, apply } from 'redux-saga/effects';
-import fetch from 'isomorphic-fetch';
+// import fetch from 'isomorphic-fetch';
 
 import {
   GET_CURRENT_USER_INFO,
@@ -10,5 +10,5 @@ import {
  
 export function* currentUserSaga () {
   const { id } = yield take(GET_CURRENT_USER_INFO);
-  console.info("ID", id);
+  console.info("ID -- сюда попал", id);
 }

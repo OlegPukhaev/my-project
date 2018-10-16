@@ -11,12 +11,12 @@ let initialState = {
   id:"U10000"
 };
 
-export function getCurrentUserInfo(value) {
+export function getCurrentUserInfo(payload) {
   // console.log("Данные для всей фигни :",value);
   return dispatch => {
     dispatch({
-      type: USER_FETCH_REQUESTED, 
-      payload: value
+      type: GET_CURRENT_USER_INFO, 
+      payload:payload
     });
   };
 }
@@ -40,8 +40,9 @@ const actionsMap = {
     }
 	},
 	[GET_CURRENT_USER_INFO]: (state, action) => {
-    return {...state,
-      user: action.payload
+    return {
+      ...state,
+      id: action.payload
     }
 	}
 };

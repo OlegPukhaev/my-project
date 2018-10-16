@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import { loggedIn } from './../selectors';
-import { userFetchRequest } from './../reducers/user';
+import { userFetchRequest, getCurrentUserInfo } from './../reducers/user';
 
 import User from './User';
 import NavBar from './../layouts/NavBar';
@@ -16,13 +16,14 @@ import PageNotFound from './PageNotFound';
 class Content extends Component {
 constructor (props) {
   super(props);
-  
+
 }
 
 
   submit = value => {
     console.log(value);
-    this.props.userFetchRequest({type: 'USER_FETCH_REQUESTED', value});
+    // this.props.userFetchRequest({type: 'USER_FETCH_REQUESTED', value});
+    this.props.getCurrentUserInfo("UID10000");
     // const { userId='2', dispatch } = this.props;
     
     // dispatch({type: 'USER_FETCH_REQUESTED', payload: {userId}})
@@ -68,7 +69,8 @@ constructor (props) {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      userFetchRequest
+      userFetchRequest,
+      getCurrentUserInfo
     },
     dispatch
   );
@@ -76,7 +78,8 @@ const mapDispatchToProps = dispatch => {
 
 function mapStateToProps (state) {
   return  {
-    loggedIn:loggedIn(state)
+    loggedIn:loggedIn(state),
+    user:state.user
   }
 }
 
