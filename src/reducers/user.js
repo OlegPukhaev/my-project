@@ -4,19 +4,18 @@ import { auth } from './../utilites/auth';
 export const USER_FETCH_REQUESTED = 'USER_FETCH_REQUESTED';
 export const GET_CURRENT_USER_INFO = 'GET_CURRENT_USER_INFO';
 
-
 let initialState = {
+  id:"U10000",
   loggedIn:false,
   user:{},
-  id:"U10000"
 };
 
-export function getCurrentUserInfo(payload) {
+export function getCurrentUserInfo(id) {
   // console.log("Данные для всей фигни :",value);
   return dispatch => {
     dispatch({
       type: GET_CURRENT_USER_INFO, 
-      payload:payload
+      id:id
     });
   };
 }
@@ -42,7 +41,7 @@ const actionsMap = {
 	[GET_CURRENT_USER_INFO]: (state, action) => {
     return {
       ...state,
-      id: action.payload
+      id: action.id
     }
 	}
 };
