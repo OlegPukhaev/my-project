@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
-import { loggedIn } from './../selectors';
+import { loggedIn,userData } from './../selectors';
 import { getCurrentUserInfo } from './../reducers/user';
 
 import User from './User';
@@ -30,10 +30,18 @@ class Content extends Component {
               <div className="container mt-3">
               <Switch>
                   <Route exact path="/"  render={() => <PublicHomePage />} />
-                  <Route exact path="/user" render={() => <User onSubmit={this.submit}/>} />
+                  <Route exact path="/user" render={() => 
+                    (
+                        loggedIn ? (
+                          <Redirect to="/page-one"/>
+                        ) : (
+                          <User onSubmit={this.submit}/>
+                        )
+                      )
+                  } />
                   <Route exact path="/page-one" render={() => (
                       loggedIn ? (
-                        <PageOne />
+                        <PageOne data={this.props.userData}/>
                       ) : (
                         <Redirect to="/user"/>
                       )
@@ -69,7 +77,7 @@ const mapDispatchToProps = dispatch => {
 function mapStateToProps (state) {
   return  {
     loggedIn:loggedIn(state),
-    user:state.user
+    userData:userData(state)
   }
 }
 
